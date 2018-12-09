@@ -13,20 +13,19 @@ const getAll = async ({ Worker }, req, res) => {
       });
     });
 };
-
+//select nome from funcionariodomes.funcionario where nome like '% ${req.query.name} %'
 const getByName = async ({ Worker }, req, res) => {
   await sequelize
-    .query(
-      `select nome from funcionariodomes.funcionario where nome like '% ${req.query.name} %'`
-    )
+    .query(`SELECT nome, cargo, COUNT(*) AS 'acumulo', concat('R$ ',round(sum(salario) * 12, 2)) as 'estimativa de gasto anual'
+from funcionariodomes.funcionario where nome like '%${req.query.name}%' group by nome, cargo order by acumulo desc`)
     .spread((results, metadata) => {
       if (results.length >= 1) {
-        res.render('workers', {
-          funcionarios: metadata,
-          msg: ''
-        });
+        res.render("workers", { funcionarios: metadata, msg: "" });
       } else {
-        res.render('workers', { msg: 'Nenhum resultado encontrado.', funcionarios: metadata });
+        res.render("workers", {
+          msg: "Nenhum resultado encontrado.",
+          funcionarios: metadata
+        });
       }
     });
 
