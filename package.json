@@ -1,0 +1,23 @@
+{
+  "name": "funcionariodomes",
+  "version": "1.0.0",
+  "description": "Webapp para cruzar dados de diferentes bancos dos orgãos públicos com finalidade de achar funcionários com acumulos de cargos.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": ["hackfest", "combate a corrupção"],
+  "author": "Pedro Souza",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.41.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}

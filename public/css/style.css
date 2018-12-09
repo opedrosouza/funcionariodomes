@@ -1,0 +1,14 @@
+body{
+  overflow-x: hidden;
+}
+.app-datas .card{
+ /* overflow-y: scroll; */
+ height: 450px;
+}
+.top-header{
+  background: url('../images/bg2.jpg') center center;
+  padding: 50px;
+}
+.uppercase{
+  text-transform: uppercase;
+}

@@ -1,0 +1,42 @@
+<%- include partials/header %>
+<section class="app-datas">
+  <div class="row justify-content-center align-items-center pt-5">
+    <div class="col-xs-12 col-md-10">
+      <h2 class="text-center d-block py-3">TODOS OS FUNCIONÁRIOS</h2>
+      <div class="card shadow px-3 mb-5">
+        <% if(msg != ''){ %>
+        <div class="alert alert-danger">
+          <%= msg %>
+        </div>
+        <% } %>
+        <table class="table table-hover table-responsive">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Cargo</th>
+              <th>Quantidade Acumulada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% funcionarios.forEach(funcionario => { %>
+            <tr>
+              <td>
+                <%= funcionario.id %>
+              </td>
+              <td>
+                <%= funcionario.nome %>
+              </td>
+              <td>
+                <%= funcionario.cargo %>
+              </td>
+              <td>1</td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<%- include partials/footer %>
