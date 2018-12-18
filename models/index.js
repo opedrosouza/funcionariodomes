@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize("funcionariodomes", "pedro", "@FuncDB18/10@", {
-  host: "159.89.137.35",
+const sequelize = new Sequelize("funcionariodomes", "root", "@FuncionarioDB18/10@", {
+  host: "localhost",
   dialect: "mysql"
 });
 
@@ -13,8 +13,6 @@ fs.readdirSync(__dirname)
     const model = sequelize.import(path.join(__dirname, file));
     models[model.name] = model;
   });
-
-const worker = sequelize.import("./worker.js");
 
 module.exports = {
   sequelize,

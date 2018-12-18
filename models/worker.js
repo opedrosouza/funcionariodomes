@@ -1,11 +1,11 @@
-const WorkerModel = (sequelize, DataTypes) => {
-  const Worker = sequelize.define("Worker", {
+const FuncionarioModel = (sequelize, DataTypes) => {
+  const Funcionarios = sequelize.define("Funcionarios", {
     nome: DataTypes.STRING,
     cargo: DataTypes.STRING,
     orgao: DataTypes.STRING,
     salario: DataTypes.STRING
   });
-  return Worker;
+  return Funcionarios;
 };
 
-module.exports = WorkerModel;
+module.exports = FuncionarioModel;
