@@ -2,9 +2,10 @@ const model = require('../models/index')
 const sequelize = model.sequelize
 
 const getAll = async ({ Worker }, req, res) => {
+  // "select count(*) as 'acumulos', nome, cargo from funcionariodomes.funcionario group by nome, cargo order by acumulos desc"
   await sequelize
-    .query(
-      "select count(*) as 'acumulos', nome, cargo from funcionariodomes.funcionario group by nome, cargo order by acumulos desc"
+  .query(
+    "select nome, count(*) as 'acumulo', concat('R$ ',round(sum(salario) * 12, 2)) as 'salarioAnual' from funcionariodomes.funcionario group by nome order by acumulo desc limit 10, 10"
     )
     .spread((results, metadata) => {
       res.render("workers", {

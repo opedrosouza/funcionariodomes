@@ -1,31 +1,45 @@
 <%- include partials/header %>
-<div class="top-header">
-  <h1 class="text-center">FUNCIONÁRIO DO MÊS</h1>
-  <p class="text-center lead uppercase"></p>
-  <form action="/workers/name" method="get" class="inline-form">
-    <div class="">
-      <input type="search" name="name" id="name" class="form-control form-control-lg" placeholder="BUSQUE PELO NOME">
-    </div>
-  </form>
-</div>
 <section class="home pt-3">
   <div class="container">
-    <div class="row justify-content-center align-items-center pt-5">
-      <h2 class="text-center d-block pb-3">TOP 10 FUNCIONÁRIOS DO MÊS</h2>
-      <div class="col-xs-12 col-md-10">
-        <div class="card-columns text-center">
-          <% funcionarios.forEach(funcionario => { %> 
-            <div class="card shadow">
-              <div class="card-body">
-                <h4><%= funcionario.nome %></h4>
-                <h6><%= funcionario.acumulo %> cargos acumulados</h6>
-                <h6>Estimativa de despesa anual <br><span class="bg-danger p-2 d-block m-2 rounded shadow text-white"><%= funcionario.salarioAnual %></span></h6>
-              </div>
-            </div>
-          <% }) %>
+    <div class="row justify-content-center align-items-center flex-column">
+      <h2 class="text-center d-block py-3">TOP 10 FUNCIONÁRIOS DO MÊS</h2>
+      <div class="cards flex-row d-flex flex-wrap justify-content-center align-items-stretch">
+        <% funcionarios.forEach(funcionario => { %>
+        <div class="card border-info shadow col-12 col-md-3 m-2 justify-content-center align-items-center">
+          <img src="/images/medal.png" alt="" width="32px" class="m-2">
+          <div class="card-body">
+            <h4 class="text-center">
+              <%= funcionario.nome %>
+            </h4>
+            <h6 class="text-center">
+              <%= funcionario.acumulo %> cargos acumulados</h6>
+            <h6 class="text-center">Estimativa de despesa anual <br><span class="bg-danger p-2 d-block m-2 rounded shadow text-white">
+                <%= funcionario.salarioAnual %></span></h6>
+          </div>
         </div>
+        <% }) %>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Modal Informativo -->
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-info">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-warning">
+      <div class="modal-header">
+        <h3 class="modal-title">Informação Importante</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Nós não estamos acusando ninguém, apenas mostramos dados disponibilizados nos sites de transparência do governo, afim de buscar esclarecimentos e facilitar o trabalho dos órgãos compententes com objetivo de retirar todos os funcionários com cargos acumulados</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <%- include partials/footer %>

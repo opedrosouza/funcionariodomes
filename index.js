@@ -16,9 +16,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Routes
+const landing = require('./routes/landing');
 const pages = require('./routes/pages');
 const workers = require('./routes/workers');
-app.use('/', pages);
+app.use('/', landing);
+app.use('/app', pages);
 app.use('/workers', workers);
 
 // Starting server and db
